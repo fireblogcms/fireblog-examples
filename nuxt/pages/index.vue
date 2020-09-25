@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div v-if="!posts">Loading...</div>
-    <div v-if="posts">
+    <h1 class="text-6xl">{{ blog.name }}</h1>
+    <p class="text-xl">{{ blog.description }}</p>
+    <div class="mt-8">
       <PostList v-if="posts" :posts="posts" />
     </div>
   </div>
@@ -19,7 +20,7 @@ export default {
   data() {
     return {
       loading: false,
-      posts: null,
+      posts: [],
       blog: null
     }
   },
@@ -30,22 +31,15 @@ export default {
           blog(filter: { _id: { eq: $blog } }) {
             name
             description
-            image {
-              url
-            }
           }
           postsCount(filter: { blog: { eq: $blog } })
           posts(limit: 20, skip: 0, filter: { blog: { eq: $blog } }) {
             slug
             title
             teaser
-            content
             updatedAt
             publishedAt
-            imageThumbnail: image(w: 200) {
-              url
-            }
-            imageFull: image {
+            imageThumbnail: image(w: 400, h: 200, fit: crop) {
               url
             }
           }

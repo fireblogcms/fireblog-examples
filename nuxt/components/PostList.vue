@@ -1,26 +1,27 @@
 <template>
-  <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+  <section class="flex flex-wrap -mx-4 overflow-hidden">
     <article
       v-for="post in posts"
       :key="post._id"
-      class="flex flex-col shadow my-4"
+      class="p-4 w-full md:w-1/2 lg:w-1/3 overflow-hidden"
     >
       <!-- Article Image -->
-      <a href="#" class="hover:opacity-75" v-if="post.imageThumbnail">
-        <img :src="post.imageThumbnail.url" />
-      </a>
-      <div class="bg-white flex flex-col justify-start p-6">
-        <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">
+      <nuxt-link :to="`/post/${post.slug}`">
+        <img v-if="post.imageThumbnail" :src="post.imageThumbnail.url" />
+      </nuxt-link>
+      <div class="bg-white">
+        <h2 class="text-2xl font-bold py-4">
           {{ post.title }}
-        </a>
-        <p href="#" class="text-sm pb-3">Published on {{ post.publishedAt }}</p>
-        <a href="#" class="pb-6">
-          {{ post.teaser }}
-        </a>
-        <a href="#" class="uppercase text-gray-800 hover:text-black">
+        </h2>
+
+        <p class="text-gray-700 mb-6">{{ post.teaser }}</p>
+
+        <nuxt-link
+          :to="`/post/${post.slug}`"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
           Continue Reading
-          <i class="fas fa-arrow-right"></i>
-        </a>
+        </nuxt-link>
       </div>
     </article>
   </section>
