@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1 class="text-6xl">{{ post.title }}</h1>
+    <AppHeader :blog="blog" />
+    <h1 class="text-4xl">{{ post.title }}</h1>
     <article>
       <div class="container">
         <div class="row">
@@ -16,12 +17,20 @@
 <script>
 import gql from 'graphql-tag'
 import apolloClient from '~/utils/apolloClient'
+import AppHeader from '~/components/AppHeader'
 
 export default {
+  components: {
+    AppHeader
+  },
   async asyncData({ params }) {
     const result = await apolloClient.query({
       query: gql`
         query postPageQuery($slug: String!, $blog: ID!) {
+          blog(filter: { _id: { eq: $blog } }) {
+            name
+            description
+          }
           post(filter: { blog: { eq: $blog }, slug: { eq: $slug } }) {
             title
             content
@@ -38,6 +47,7 @@ export default {
       }
     })
     return {
+      blog: result.data.blog,
       post: result.data.post
     }
   }

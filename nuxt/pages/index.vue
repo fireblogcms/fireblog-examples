@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1 class="text-6xl">{{ blog.name }}</h1>
-    <p class="text-xl">{{ blog.description }}</p>
+    <AppHeader :blog="blog" />
     <div class="mt-8">
       <PostList v-if="posts" :posts="posts" />
     </div>
@@ -11,11 +10,13 @@
 <script>
 import gql from 'graphql-tag'
 import apolloClient from '~/utils/apolloClient'
+import AppHeader from '~/components/AppHeader'
 import PostList from '~/components/PostList'
 
 export default {
   components: {
-    PostList
+    PostList,
+    AppHeader
   },
   data() {
     return {
