@@ -26,7 +26,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/static/css/editor.css'],
   /*
    ** Plugins to load before mounting the App
    */
