@@ -2,7 +2,7 @@
   <nav>
     <ul class="pagination">
       <li v-for="i in pagesNumber" :key="i">
-        <nuxt-link :to="`/page/${i}`">
+        <nuxt-link :to="i === 1 ? '/' : `/page/${i}`">
           {{ i }}
         </nuxt-link>
       </li>

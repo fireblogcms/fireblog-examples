@@ -32,7 +32,7 @@ export default {
 }
 .read-more {
   display: inline-block;
-  padding: 20px;
+  padding: 10px 20px;
   border: solid black 1px;
   color: black;
   text-decoration: none;

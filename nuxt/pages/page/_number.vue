@@ -12,6 +12,11 @@ export default {
   components: {
     IndexPage
   },
+  validate({ params }) {
+    // the path "/" is in charge of displaying page one, so
+    // don't wan to create a page "/page/1", to avoid duplicate content
+    return parseInt(params.number) > 1
+  },
   async asyncData(context) {
     const page = parseInt(context.route.params.number)
     const variables = {

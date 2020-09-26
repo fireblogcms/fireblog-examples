@@ -1,7 +1,7 @@
 export default {
   target: 'static',
   fireblog: {
-    postsPerPage: 20
+    postsPerPage: 10
   },
   /*
    ** Headers of the page
