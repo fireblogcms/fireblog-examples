@@ -7,7 +7,12 @@ export const indexPageQuery = gql`
       description
     }
     postsCount(filter: { blog: { eq: $blog } })
-    posts(limit: $limit, skip: $skip, filter: { blog: { eq: $blog } }) {
+    posts(
+      limit: $limit
+      skip: $skip
+      sort: { publishedAt: desc }
+      filter: { blog: { eq: $blog } }
+    ) {
       slug
       title
       teaser

@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h1>{{ blog.name }}</h1>
-    <p>{{ blog.description }}</p>
+    <h1>
+      <nuxt-link to="/">{{ blog.name }}</nuxt-link>
+    </h1>
+    <p>
+      <em>{{ blog.description }}</em>
+    </p>
   </div>
 </template>
 

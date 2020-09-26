@@ -3,7 +3,7 @@
     <AppHeader :blog="blog" />
     <h1>{{ post.title }}</h1>
     <article>
-      <div v-html="post.content" class="ck-content" />
+      <div v-html="post.content" class="fireblog-content" />
     </article>
   </div>
 </template>
@@ -26,11 +26,11 @@ export default {
         }
         post(filter: { blog: { eq: $blog }, slug: { eq: $slug } }) {
           title
+          publishedAt
           content
           image {
             url
           }
-          publishedAt
         }
       }
     `

@@ -29,6 +29,9 @@ export default {
 </script>
 
 <style scoped>
+.pagination {
+  padding-left: 0;
+}
 .pagination li {
   display: inline;
 }

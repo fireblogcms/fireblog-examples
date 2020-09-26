@@ -1,11 +1,15 @@
 <template>
   <div>
-    <AppHeader :blog="blog" />
-    <AppPagination
-      :totalResults="postsCount"
-      :resultsPerPage="resultsPerPage"
-    />
+    <div class="header-wrapper">
+      <AppHeader :blog="blog" />
+    </div>
     <PostList v-if="posts" :posts="posts" />
+    <div class="pagination-wrapper">
+      <AppPagination
+        :totalResults="postsCount"
+        :resultsPerPage="resultsPerPage"
+      />
+    </div>
   </div>
 </template>
 
@@ -40,3 +44,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.header-wrapper {
+  margin-bottom: 40px;
+}
+.pagination-wrapper {
+  margin-top: 40px;
+}
+</style>
