@@ -9,14 +9,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "apollo-cache-inmemory": "^1.6.3",
-    "apollo-client": "^2.6.4",
-    "apollo-link": "^1.2.13",
-    "apollo-link-http": "^1.5.16",
-    "graphql": "^14.5.8",
-    "graphql-tag": "^2.10.1",
-    "cross-fetch": "^3.0.4"
+    "serve": "serve dist",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "lint-staged": {
     "*.{js,vue}": "eslint"
@@ -42,6 +36,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^2.6.0",
     "lint-staged": "^8.2.1",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "serve": "^11.3.2"
   }
 }
