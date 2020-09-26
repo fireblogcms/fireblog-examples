@@ -27,3 +27,7 @@ npm run serve
 ## deploy
 
 You can deploy your blog with Netlify or Vercel. Or you can simply upload files from your `dist` directory anywhere, that is the beauty of static blogs !
+
+## TODO
+
+-[ ] fix headers and metatags
