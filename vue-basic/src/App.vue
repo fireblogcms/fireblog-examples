@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     async fetchData() {
-      console.log(process.env.VUE_APP_FIREBLOG_GRAPHQL_ENDPOINT);
       const query = gql`
         query($blog: ID!, $skip: Int!, $limit: Int!) {
           blog(filter: { _id: { eq: $blog } }) {
