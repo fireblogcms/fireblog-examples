@@ -3,7 +3,7 @@
     <AppHeader :blog="blog" />
     <h1>{{ post.title }}</h1>
     <article>
-      <div v-html="post.content" class="fireblog-content" />
+      <div v-html="post.content" class="ck-content" />
     </article>
   </div>
 </template>

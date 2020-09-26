@@ -2,7 +2,11 @@
   <section>
     <article v-for="post in posts" :key="post._id" class="post">
       <nuxt-link :to="`/post/${post.slug}`">
-        <img v-if="post.imageThumbnail" :src="post.imageThumbnail.url" />
+        <img
+          v-if="post.imageThumbnail"
+          :src="post.imageThumbnail.url"
+          loading="lazy"
+        />
       </nuxt-link>
       <div class="bg-white">
         <h2>{{ post.title }}</h2>

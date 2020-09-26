@@ -18,7 +18,7 @@ export const indexPageQuery = gql`
       teaser
       updatedAt
       publishedAt
-      imageThumbnail: image(w: 400, h: 200, fit: crop) {
+      imageThumbnail: image(w: 800, h: 200, fit: crop) {
         url
       }
     }
