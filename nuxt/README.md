@@ -4,7 +4,7 @@ Generate a super fast static blog with Nuxt and fireblog, with the new "full sta
 
 ## getting started
 
-copy `.env.template` to create a `.env` file
+copy `.env.template` to create a `.env` file. Use your own fireblog GraphQL endpoint and blog id here.
 
 Run dev server:
 
@@ -26,4 +26,4 @@ npm run serve
 
 ## deploy
 
-You can deploy your blog with Netlify or Vercel.
+You can deploy your blog with Netlify or Vercel. Or you can simply upload files from your `dist` directory anywhere, that is the beauty of static blogs !
