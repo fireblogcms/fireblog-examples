@@ -2,6 +2,9 @@
   <div>
     <AppHeader :blog="blog" />
     <h1>{{ post.title }}</h1>
+    <div v-if="post.image">
+      <img :src="post.image.url" />
+    </div>
     <article>
       <div v-html="post.content" class="ck-content" />
     </article>
@@ -27,7 +30,7 @@ export default {
           title
           publishedAt
           content
-          image {
+          image(w: 800, h: 300, fit: crop) {
             url
           }
         }
