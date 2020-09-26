@@ -3,7 +3,7 @@
     <AppHeader :blog="blog" />
     <h1>{{ post.title }}</h1>
     <article>
-      <div ref="content" class="ck-content" />
+      <div v-html="post.content" class="ck-content" />
     </article>
   </div>
 </template>
@@ -12,7 +12,6 @@
 import { gql } from 'graphql-request'
 import graphqlClient from '~/utils/graphqlClient'
 import AppHeader from '~/components/AppHeader'
-
 export default {
   components: {
     AppHeader
@@ -40,8 +39,5 @@ export default {
     })
     return { blog, post }
   }
-
-
-
-
 }
+</script>
