@@ -1,22 +1,16 @@
 <template>
   <div>
     <AppHeader :blog="blog" />
-    <h1 class="text-4xl">{{ post.title }}</h1>
+    <h1>{{ post.title }}</h1>
     <article>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div ref="content" v-html="post.content" class="content" />
-          </div>
-        </div>
-      </div>
+      <div v-html="post.content" class="content" />
     </article>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
-import apolloClient from '~/utils/apolloClient'
+import { gql } from 'graphql-request'
+import graphqlClient from '~/utils/graphqlClient'
 import AppHeader from '~/components/AppHeader'
 
 export default {
@@ -24,32 +18,27 @@ export default {
     AppHeader
   },
   async asyncData({ params }) {
-    const result = await apolloClient.query({
-      query: gql`
-        query postPageQuery($slug: String!, $blog: ID!) {
-          blog(filter: { _id: { eq: $blog } }) {
-            name
-            description
-          }
-          post(filter: { blog: { eq: $blog }, slug: { eq: $slug } }) {
-            title
-            content
-            image {
-              url
-            }
-            publishedAt
-          }
+    const query = gql`
+      query postPageQuery($slug: String!, $blog: ID!) {
+        blog(filter: { _id: { eq: $blog } }) {
+          name
+          description
         }
-      `,
-      variables: {
-        blog: process.env.FIREBLOG_BLOG_ID,
-        slug: params.slug
+        post(filter: { blog: { eq: $blog }, slug: { eq: $slug } }) {
+          title
+          content
+          image {
+            url
+          }
+          publishedAt
+        }
       }
+    `
+    const { blog, post } = await graphqlClient.request(query, {
+      blog: process.env.FIREBLOG_BLOG_ID,
+      slug: params.slug
     })
-    return {
-      blog: result.data.blog,
-      post: result.data.post
-    }
+    return { blog, post }
   }
 }
 </script>
