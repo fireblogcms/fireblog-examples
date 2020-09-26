@@ -1,9 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <div style="text-align: center">
+      <img alt="Vue logo" src="./assets/logo.png" />
+    </div>
     <div v-if="loading">Loading ...</div>
-    <div v-if="!loading">
-      {{ blog }}
+    <div v-if="!loading" style="max-width:700px;margin:auto">
+      <header style="margin-bottom:40px;text-align:center">
+        <h1>{{ blog.name }}</h1>
+        <em>{{ blog.description }} </em>
+      </header>
+      <ul class="articles">
+        <li v-for="post in posts" :key="post._id">
+          {{ post.title }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -23,6 +33,7 @@ export default {
   },
   methods: {
     async fetchData() {
+      console.log(process.env.VUE_APP_FIREBLOG_GRAPHQL_ENDPOINT);
       const query = gql`
         query($blog: ID!, $skip: Int!, $limit: Int!) {
           blog(filter: { _id: { eq: $blog } }) {
@@ -36,6 +47,7 @@ export default {
             sort: { publishedAt: desc }
             filter: { blog: { eq: $blog } }
           ) {
+            _id
             slug
             title
             teaser
@@ -50,7 +62,7 @@ export default {
       const result = await graphqlClient.request(query, {
         skip: 0,
         limit: 20,
-        blog: process.env.VUE_FIREBLOG_BLOG_ID,
+        blog: process.env.VUE_APP_FIREBLOG_BLOG_ID,
       });
       this.blog = result.blog;
       this.postsCount = result.postsCount;
@@ -69,7 +81,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
