@@ -1,5 +1,8 @@
 export default {
   target: 'static',
+  fireblog: {
+    postsPerPage: 20
+  },
   /*
    ** Headers of the page
    */
@@ -39,11 +42,6 @@ export default {
    ** Nuxt.js modules
    */
   modules: ['@nuxtjs/dotenv'],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {},
   /*
    ** Build configuration
    */

@@ -13,13 +13,15 @@ export default {
     IndexPage
   },
   async asyncData(context) {
+    const page = parseInt(context.route.params.number)
+    const variables = {
+      skip: page === 1 ? 0 : (page - 1) * config.fireblog.postsPerPage,
+      limit: config.fireblog.postsPerPage,
+      blog: process.env.FIREBLOG_BLOG_ID
+    }
     const { blog, postsCount, posts } = await graphqlClient.request(
       indexPageQuery,
-      {
-        skip: 0,
-        limit: config.fireblog.postsPerPage,
-        blog: process.env.FIREBLOG_BLOG_ID
-      }
+      variables
     )
     return { blog, posts, postsCount }
   }
