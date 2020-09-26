@@ -1,22 +1,29 @@
-# nuxt
+# Fireblog + Nuxt example
 
-> Fireblog + nuxt example
+Generate a super fast static blog with Nuxt and fireblog, with the new "full static mode "from Nuxt.
 
-## Build Setup
+## getting started
 
-``` bash
-# install dependencies
-$ npm run install
+copy `.env.template` to create a `.env` file
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+Run dev server:
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+```sh
+npm run dev
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Build and serve your static blog:
+
+```sh
+npm run generate
+```
+
+You can now serve your static files from your `dist` directory running this command:
+
+```sh
+npm run serve
+```
+
+## deploy
+
+You can deploy your blog with Netlify or Vercel.
