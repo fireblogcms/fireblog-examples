@@ -13,17 +13,10 @@
 <script>
 export default {
   props: {
-    totalResults: {
-      type: Number,
-      required: true
-    },
-    resultsPerPage: {
+    pagesNumber: {
       type: Number,
       required: true
     }
-  },
-  created() {
-    this.pagesNumber = Math.ceil(this.totalResults / this.resultsPerPage)
   }
 }
 </script>

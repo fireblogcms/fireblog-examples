@@ -5,10 +5,7 @@
     </div>
     <PostList v-if="posts" :posts="posts" />
     <div class="pagination-wrapper">
-      <AppPagination
-        :totalResults="postsCount"
-        :resultsPerPage="resultsPerPage"
-      />
+      <AppPagination v-if="pagesNumber > 1" :pagesNumber="pagesNumber" />
     </div>
   </div>
 </template>
@@ -40,7 +37,7 @@ export default {
     }
   },
   created() {
-    this.resultsPerPage = config.fireblog.postsPerPage
+    this.pagesNumber = Math.ceil(this.postsCount / config.fireblog.postsPerPage)
   }
 }
 </script>
