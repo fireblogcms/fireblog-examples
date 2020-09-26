@@ -21,7 +21,7 @@ npm run generate
 You can now serve your static files from your `dist` directory running this command:
 
 ```sh
-npm run serve
+npm run start
 ```
 
 ## deploy
